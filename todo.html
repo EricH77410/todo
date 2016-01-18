@@ -1,0 +1,59 @@
+
+<head>
+  <title>Todo List</title>
+</head>
+
+<body>
+
+  <div class="container">
+
+    <header>
+
+      <h1>Todo</h1>
+
+      <form class="new-task">
+      	<div class="input-field col s6">
+          <input name="tt" id="new" type="text" class="validate">
+          <label for="new">Ajouter une nouvelle tâche</label>
+        </div>
+      </form>
+
+    </header>
+
+        {{> task}}
+
+  </div>
+
+</body>
+
+<template name="task">
+
+	<div class="switch">
+		<label>Masquer les tâches réalisées</label>
+    	<label>
+      		Off
+      		<input type="checkbox" class="undone" checked="{{show_undone}}">
+      		<span class="lever"></span>
+      		On
+    	</label>
+  	</div>
+
+	<table class="centered bordered">
+		<thead>
+			<tr>
+				<th class="order_by">Fait</th>
+				<th>Tâches</th>
+				<th>Supp.</th>
+			</tr>
+		</thead>
+		<tbody>
+			{{#each tasks}}
+				<tr>
+					<td><form><input class="task_done" type="checkbox" id="{{_id}}" checked="{{done}}"><label for="{{_id}}"></label></form></td>
+					<td>{{text}}</td>
+					<td><button class="btn waves-effect waves-light del">Supp.</button></td>
+				</tr>
+			{{/each}}
+		</tbody>
+	</table>
+</template>
